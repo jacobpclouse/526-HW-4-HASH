@@ -13,3 +13,4 @@ You must submit the following via UAlbany Blackboard:
 
 ## Resources Used:
 - AES Python Code: https://github.com/boppreh/aes
+- How to convert AES to a PRNG in order to run NIST Statistical Test Suite?: https://crypto.stackexchange.com/questions/32495/how-to-convert-aes-to-a-prng-in-order-to-run-nist-statistical-test-suite
