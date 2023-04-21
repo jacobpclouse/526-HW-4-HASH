@@ -1,0 +1,13 @@
+In cryptography, one-way functions and collision resistance are two important concepts related to the security of cryptographic hash functions.
+
+A one-way function is a mathematical function that is easy to compute in one direction but difficult to invert in the other direction. Specifically, given an input x, it is easy to compute the output f(x). However, given the output f(x), it should be computationally infeasible to determine the original input x. This property is also known as "preimage resistance". One-way functions are important building blocks for many cryptographic protocols, including digital signatures and key derivation functions.
+
+Collision resistance is a property of hash functions that makes it difficult to find two distinct inputs that produce the same output (i.e., a collision). In other words, given a hash value h, it should be computationally infeasible to find two different inputs x and y such that f(x) = f(y) = h.
+
+There are two types of collision resistance: weak collision resistance and strong collision resistance.
+
+Weak collision resistance (also called "2nd preimage resistance") means that given an input x, it is difficult to find another input y that produces the same output f(x) = f(y). However, the attacker is allowed to choose x and then tries to find another input y that hashes to the same value.
+
+Strong collision resistance (also called "collision resistance") means that it is computationally infeasible to find any two inputs x and y that produce the same output, even if the attacker can choose both inputs.
+
+In summary, one-way functions are functions that are easy to compute in one direction but difficult to invert in the other direction, and collision resistance is a property of hash functions that makes it difficult to find two distinct inputs that produce the same output. Weak collision resistance means that it is difficult to find a second input that produces the same output given one input, while strong collision resistance means that it is computationally infeasible to find any two inputs that produce the same output.
