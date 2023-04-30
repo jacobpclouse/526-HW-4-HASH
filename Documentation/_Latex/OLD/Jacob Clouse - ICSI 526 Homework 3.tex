@@ -1,0 +1,305 @@
+\documentclass[10pt]{article}
+\usepackage{fullpage}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{hhline}
+
+%\graphicspath{{./imgs/} {./imgs/Q1/} {./imgs/Q2/}}
+
+% these are compressed lists to help fit into a 1 page limit
+\newenvironment{enumerate*}%
+  {\vspace{-2ex} \begin{enumerate} %
+     \setlength{\itemsep}{-1ex} \setlength{\parsep}{0pt}}%
+  {\end{enumerate}}
+ 
+\newenvironment{itemize*}%
+  {\vspace{-2ex} \begin{itemize} %
+     \setlength{\itemsep}{-1ex} \setlength{\parsep}{0pt}}%
+  {\end{itemize}}
+ 
+\newenvironment{description*}%
+  {\vspace{-2ex} \begin{description} %
+     \setlength{\itemsep}{-1ex} \setlength{\parsep}{0pt}}%
+  {\end{description}}
+
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\let\Pr\relax
+\DeclareMathOperator*{\Pr}{\mathbb{P}}
+
+\newcommand{\inprod}[1]{\left\langle #1 \right\rangle}
+\newcommand{\eqdef}{\mathbin{\stackrel{\rm def}{=}}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\author{\vspace{0.2in}\textbf{Written by Jacob Clouse}\\  Partner 1: Jacob Clouse with Shares: (37,9) and (37,18)\\ Partner 2: Luna Dagci with Shares: (38,24) and (38,2)}
+\title{Spring 2023 - ICSI 526\\Homework $3$}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\vspace{0.2in}
+\noindent NOTE: I did not attempt the optional Question 3
+\section{Question 1}
+\subsection{Trying to find secret values}
+% YOU NEED TO WORKOUT ALL ATTEPMTS TO REVERSE ENGINEER THIS AS AN ATTACKER
+\noindent I am Partner 1 in this instance and my shares are: (37,9) and  (37,18), with our prime being 31. These are two different shares from two different equations, and we know that the original cipher is a (2, n) SSS scheme. This means we need 2 shares (k) at least in order to retrieve it, but we have only 1 for each (k - 1). We know that from our text that we can not find the original value from this, but lets look deeper. To retrieve our original secret ($a_0$), we use the formula:\\ 
+
+$f(37) = (a_0 + a_1*37) \textrm{ mod } 31$
+\vspace{0.1in}
+\newline
+Lets use (37,9) to try and fill in as much as we can with the formula. Lets say we have $a_0$ = 3 and $a_1$ = 1, then we have:
+\\ 
+
+$f(37) = (3 + 1*37) \textrm{ mod } 31$
+$\rightarrow$ 9
+\vspace{0.1in}
+\newline
+Or lets say we have $a_0$ = 34 and $a_1$ = 1, then we have:
+\\ 
+
+$f(37) = (34 + 1*37) \textrm{ mod } 31$
+$\rightarrow$ 9
+\vspace{0.1in}
+\newline
+Or lets say we have $a_0$ = 59 and $a_1$ = 2, then we have:
+\\ 
+
+$f(37) = (59 + 2*37) \textrm{ mod } 31$
+$\rightarrow$ 9
+\vspace{0.1in}
+\newline
+How do we know which one is correct? They all give us the same answer and  each one is equally likely. This is why we can't know for sure and is why it is impossible to find the secret without having k shares.
+% YOU NEED TO WORKOUT ALL ATTEPMTS TO REVERSE ENGINEER THIS AS AN ATTACKER
+
+\if false
+For example, if we choose x2 = 10 and y2 = 25, we see our formula develop like this: \\
+f(x) = 9 * (x - 10) / 27 + 25 * (x - 37) / (-27) = 25 - (x - 10) / 3 - (x - 37) or (-2x + 96) mod q\\
+\newline
+Or we can choose x2 = 20 and y2 = 15 and have our formula look like: \\
+f(x) = 9 * (x - 20) / 17 + 15 * (x - 37) / (-17) = 15 - 3(x - 20) / 17 - 5(x - 37) / 17 or (-8x + 351) mod q\\
+\fi
+
+\vspace{0.2in}
+\subsection{Finding Average}
+\noindent For the average, I had to take my two shares and average the y coordinates together, my partner had to do the same with their shares and then we could feed the result into the Lagrange Formula to get our f(0) value.\\
+Again, as Partner 1, my two shares were: (37,9) and (37,18). 
+So I initially thought I had to just average 9 and 18, but that will lead to a decimal. So i had to use the forumla: (9+18)*$2^{-1} \textrm{ mod } 31$.  Here is \textbf{my} math:\\ \vspace{0.1in}
+
+$\left(9+18\right)*2^{-1} \textrm{ mod } 31$ $\rightarrow$
+$\left(27\right)*16 \textrm{ mod } 31$ $\rightarrow$
+$432 \textrm{ mod } 31$ $\rightarrow$ \textbf{29}\\
+\newline
+
+\noindent Luna was Partner 2 and her two shares were: (38,24) and (38,2). 
+She had to average 24 and 2, here is \textbf{her} math:\\ \vspace{0.1in}
+
+$\left(\frac{24+2}{2}\right) \textrm{ mod } 31$ $\rightarrow$
+$\left(\frac{26}{2}\right) \textrm{ mod } 31$ $\rightarrow$ 
+$\left(13\right) \textrm{ mod } 31$ $\rightarrow$ \textbf{13}\\
+\newline
+
+\noindent We now had our two averaged shares: (37,29) and (38,13). We plugged them into our Lagrange Formula and got the following:\\ \vspace{0.1in}
+
+$f(x) = y_1*\left(\frac{x - x_2}{x_1 - x_2}\right) + y_2*\left(\frac{x - x_1}{x_2 - x_1}\right) \textrm{ mod } 31$ 
+$\rightarrow$
+$f(x) = 29*\left(\frac{x - 38}{37 - 38}\right) + 13*\left(\frac{x - 37}{38 - 37}\right) \textrm{ mod } 31$\\
+
+%\noindent Solving for f(0):\\ \vspace{0.1in}
+
+$f(0) = 29*\left(\frac{0 - 38}{37 - 38}\right) + 13*\left(\frac{0 - 37}{38 - 37}\right) \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 29*\left(\frac{-38}{-1}\right) + 13*\left(\frac{-37}{1}\right)  \textrm{ mod } 31$
+\vspace{0.1in}
+
+$f(0) = 29*38 + 13*(-37)  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 1102 + (-481)  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 621  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 1$
+
+\vspace{0.1in}
+\noindent \textbf{f(0) = 1 for the averaged formula}, we just need to work backwards and see if we can get the original values. We find secret 1 with shares (37,9) and (38,24):\\ \vspace{0.1in}
+
+$f(x) = 9*\left(\frac{x - 38}{37 - 38}\right) + 24*\left(\frac{x - 37}{38 - 37}\right) \textrm{ mod } 31$\\
+
+%\noindent Solving for f(0):\\ \vspace{0.1in}
+
+$f(0) = 9*\left(\frac{0 - 38}{37 - 38}\right) + 24*\left(\frac{0 - 37}{38 - 37}\right) \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 9*\left(\frac{-38}{-1}\right) + 24*\left(\frac{-37}{1}\right)  \textrm{ mod } 31$
+\vspace{0.1in}
+
+$f(0) = 9*38 + 24*(-37)  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 342 + (-888)  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = -546  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 12$
+\vspace{0.15in}
+
+\noindent f(0) for secret 1 is 12.  We find secret 2 with shares (37,18) and (38,2):\\ \vspace{0.1in}
+
+$f(x) = 18*\left(\frac{x - 38}{37 - 38}\right) + 2*\left(\frac{x - 37}{38 - 37}\right) \textrm{ mod } 31$\\
+
+%\noindent Solving for f(0):\\ \vspace{0.1in}
+
+$f(0) = 18*\left(\frac{0 - 38}{37 - 38}\right) + 2*\left(\frac{0 - 37}{38 - 37}\right) \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 18*\left(\frac{-38}{-1}\right) + 2*\left(\frac{-37}{1}\right)  \textrm{ mod } 31$
+\vspace{0.1in}
+
+$f(0) = 18*38 + 2*(-37)  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 684 + (-74)  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 610  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 21$
+\vspace{0.15in}
+
+\noindent f(0) for secret 2 is 21.  Now we take these numbers and can feed them back into our average formula: (12+21)*$2^{-1} \textrm{ mod } 31$.  Here is \textbf{my} math:\\ \vspace{0.1in}
+
+$\left(12+21\right)*2^{-1} \textrm{ mod } 31$ $\rightarrow$
+$\left(33\right)*16 \textrm{ mod } 31$ $\rightarrow$
+$526 \textrm{ mod } 31$ $\rightarrow$ \textbf{1}\\
+\vspace{0.15in}
+
+\noindent 1 = 1, but why? The reason lies with the operations that we performed on the data: addition and scalar division. \\
+We know that both addition and scalar division are supported homomorphic operations inside of Shamir's Secret Sharing sharing. These operations ensure that the image will be kept 'in proportion' so to speak. 
+\if false
+It is because we kept proportions using scalar multiplication (the inverse modulus 2 and the normal averaging of luna's shares). This ensured that we kept everything in line and got the same average in the end. 
+\fi
+
+
+
+% NEED HELP ASK PRADEEP
+
+
+
+
+
+
+\vspace{0.2in}
+\subsection{Finding Multiplication}
+\noindent To calculate the multiplication value, I had to multiply my two share y values and then find mod 31 of the product. My partner had to do the same with their shares and then we could feed the result into the Lagrange Formula to get our f(0) value.\\
+Again, as Partner 1, my two shares were: (37,9) and (37,18). 
+So I had to multiply 9 and 18, here is \textbf{my} math:\\ \vspace{0.1in}
+
+$\left(9*18\right) \textrm{ mod } 31$ $\rightarrow$
+$\left(162\right) \textrm{ mod } 31$ $\rightarrow$ \textbf{7}\\
+\newline
+
+\noindent Luna was Partner 2 and her two shares were: (38,24) and (38,2). 
+She had to multiply 24 and 2, here is \textbf{her} math:\\ \vspace{0.1in}
+
+$\left(24*2\right) \textrm{ mod } 31$ $\rightarrow$
+$\left(48\right) \textrm{ mod } 31$ $\rightarrow$ \textbf{17}\\
+\newline
+
+\noindent We now had our two multiplied shares: (37,7) and (38,17). We plugged them into our Lagrange Formula and got the following:\\ \vspace{0.1in}
+
+$f(x) = y_1*\left(\frac{x - x_2}{x_1 - x_2}\right) + y_2*\left(\frac{x - x_1}{x_2 - x_1}\right) \textrm{ mod } 31$ 
+$\rightarrow$
+$f(x) = 7*\left(\frac{x - 38}{37 - 38}\right) + 17*\left(\frac{x - 37}{38 - 37}\right) \textrm{ mod } 31$\\
+
+\noindent Solving for f(0):\\ \vspace{0.1in}
+
+$f(0) = 7*\left(\frac{0 - 38}{37 - 38}\right) + 17*\left(\frac{0 - 37}{38 - 37}\right) \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 7*\left(\frac{-38}{-1}\right) + 17*\left(\frac{-37}{1}\right)  \textrm{ mod } 31$
+\vspace{0.1in}
+
+$f(0) = 7*38 + 17*(-37)  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 266 + (-629)  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = -363  \textrm{ mod } 31$
+$\rightarrow$
+$f(0) = 9$
+
+\vspace{0.1in}
+\noindent f(0) = \textbf{9} for the multiplication formula, we just need to work backwards and see if we can get the original values. We from 1.2 that secret 1 = 12 and secret 2 = 21. But we see that when we plug in these values into the original formula, we are left with a problem: \\ \vspace{0.1in}
+
+
+$(12 * 21) \textrm{ mod } 31$ 
+$\rightarrow$
+$252 \textrm{ mod } 31$
+$\rightarrow$
+$4$
+\newline
+
+\vspace{0.1in}
+\noindent The reason is because full, non-scalar multiplication is NOT supported within Shamir's Secret Sharing. Scalar multiplication would have been supported (scalar multiplication is multiplying by a constant). Because we are multiplying each share against each other (and NOT a constant), this is full multiplication and it will NOT work (things will not be 'kept in proportion' so to speak).\\
+
+\if false
+\noindent These are not the same and this is because we didn't maintain the proportions with scalar multiplication (like we did in 1.2). This means that the aspects haven't been preserved by homomorphism. 
+\fi
+
+
+
+
+
+
+\vspace{0.2in}
+\section{Question 2}
+\subsection{Youtube Presentation Video Link}
+\noindent My youtube video is live at: \textbf{https://youtu.be/uT2ZnAfslW8}
+
+\subsection{How to Run My Shamir Secret Sharing program (Non-Downscaling) } 
+\noindent This will encrypt and decrypt the input image WITHOUT changing the dimensions of the output. It is hard coded to make a (2,5) cipher with 5 total shares and 2 required shares to reconstruct. \\ Instructions: 
+\begin{enumerate}
+	\item Make sure you have the numPy, openCV, PIL and random libraries installed and accessible in your environment.
+	
+	\item Make sure you have a SQUARE sample bitmap in the same location as the \textbf{Jacob\_Clouse\_Q2\_SSS.py} file. Both length and width must be the same for it to work (for example, the picture can be 640 x 640).
+	
+	\item You can run the file by entering the file's directory in a terminal and running: \textbf{python Jacob\_Clouse\_Q2\_SSS.py} (if you have python2 and python3 installed, you might need to use: \textbf{python3 Jacob\_Clouse\_Q2\_SSS.py})
+	
+	\item After my logo, you will be asked to input the path/name of the input bitmap WITH the .bmp extension (if you have placed the image file in same folder, you can enter in just the name like so: \textbf{example.bmp})
+	
+	\item It will then ask you if you want to downsize, enter in 'no' (as we want to preserve our original dimensions). 
+	
+	\item You will see it create the 5 shares in the same directory and then it will output file (it will have 'reconstructed' in its name and the dimensions of the image). You are all done!
+\end{enumerate}
+\vspace{.1in}
+\noindent We take the image and open it up in our first, then adjust all values so that the max is 250. Once we get our pixel values, we then generate our coefficients and create our shares. We then feed the shares into our decrypt function and get our reconstructed image back. 
+\vspace{0.2in}
+
+\subsection{How to Run My Shamir Secret Sharing program (Downscaling) } 
+\noindent This will encrypt and decrypt the input image WITH changing the dimensions of the output to be half width and half height of the original. It is hard coded to make a (2,5) cipher with 5 total shares and 2 required shares to reconstruct. \\ Instructions: 
+\begin{enumerate}
+	\item Again, Make sure you have the numPy, openCV, PIL and random libraries installed and accessible in your environment.
+	
+	\item Again, Make sure you have a SQUARE sample bitmap in the same location as the \textbf{Jacob\_Clouse\_Q2\_SSS.py} file. Both length and width must be the same for it to work (for example, the picture can be 640 x 640).
+	
+	\item Again, You can run the file by entering the file's directory in a terminal and running: \textbf{python Jacob\_Clouse\_Q2\_SSS.py} (if you have python2 and python3 installed, you might need to use: \textbf{python3 Jacob\_Clouse\_Q2\_SSS.py})
+	
+	\item After my logo, you will be asked to input the path/name of the input bitmap WITH the .bmp extension (if you have placed the image file in same folder, you can enter in just the name like so: \textbf{example.bmp})
+	
+	\item It will then ask you if you want to downsize, enter in 'yes' (the only difference from non-downscaling, we want to downsize the width and height to be half of the original values). 
+	
+	\item You will see it create the 5 shares in the same directory and then it will output file (it will have 'reconstructed' in its name and the dimensions of the image, which should be half of the original). 
+	\subitem The file will be downscaled multiple times, once it will be downscaled directly before encryption of the shares. 
+	\subitem The second time we downscale will be the shares after encryption. After they are generated, we take each and downscale them accordingly.
+	
+	\item The reconstruction will be the same and you will be able to view the MAE in the console window. After this, you are all set!
+	
+\end{enumerate}
+
+\vspace{0.2in}
+
+
+
+
+
+
+
+
+
+
+\end{document}

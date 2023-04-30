@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}Question 1}{1}{}%
+\contentsline {subsection}{\numberline {1.1}Implement hash function A (n = p x q)}{1}{}%
+\contentsline {subsection}{\numberline {1.2}Implement hash function B (h2(m) = M1 $\oplus $ M2 … $\oplus $ Mn.)}{1}{}%
+\contentsline {section}{\numberline {2}Question 2}{1}{}%
+\contentsline {subsection}{\numberline {2.1}Design and implement a PRNG using AES (OFB mode)}{1}{}%
+\contentsline {subsection}{\numberline {2.2}Calculate the Fraction of One Bits}{1}{}%
