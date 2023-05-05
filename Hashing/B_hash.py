@@ -18,6 +18,7 @@ def divide_into_blocks(m):
         blocks.append(last_block)
     return blocks
 
+
 # SOURCE REFERENCED: https://realpython.com/python-zip-function/
 def h2(blocks):
     # Apply the h2 hash function to the blocks
@@ -33,4 +34,13 @@ blocks = divide_into_blocks(m)
 hash_result = h2(blocks)
 print(hash_result)
 
+'''
+One Way Property: This does satisfy the One Way Property.
 
+
+Weak Collision Resistance: This is Weak Collision Resistant.
+
+
+Strong Collision Resistance: This is Strong Collision Resistant. 
+
+'''

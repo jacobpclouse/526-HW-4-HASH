@@ -26,7 +26,7 @@ hashed_value = h1(x, p, q)
 print(f"Original X = {x}, Hashed value = {hashed_value}")
 
 '''
-One Way Property: This does satisfy the one way property even if we know n. We because of the Modulus, we don't know how many times the original function has 'wrapped around' so to speak. We can't predict the output.
+One Way Property: This does satisfy the One Way Property even if we know n. We because of the Modulus, we don't know how many times the original function has 'wrapped around' so to speak. We can't predict the output.
 
 
 Weak Collision Resistance: This is NOT Weak Collision Resistant, it is possible to generate the same hash value for two different inputs. We can use -2 and 2 as our input x values and p = 107 and q = 127 for our primes.
