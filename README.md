@@ -14,3 +14,5 @@ You must submit the following via UAlbany Blackboard:
 ## Resources Used:
 - AES Python Code: https://github.com/boppreh/aes
 - How to convert AES to a PRNG in order to run NIST Statistical Test Suite?: https://crypto.stackexchange.com/questions/32495/how-to-convert-aes-to-a-prng-in-order-to-run-nist-statistical-test-suite
+- Using the Python zip() Function for Parallel Iteration: https://realpython.com/python-zip-function/
+- Cryptography hash method MD2 (Message Digest 2) explained with Python: https://nickthecrypt.medium.com/cryptography-hash-method-md2-message-digest-2-step-by-step-explanation-made-easy-with-python-10faa2e35e85
