@@ -4,6 +4,7 @@ pip install --upgrade pip
 
 1) Create New Virtural Envir. (when first starting up -- you can use any name)
 python3 -m venv venvNameHM4
+python -m venv venvNameHM4
 
 (If you don't have python2 and python 3 installed): python -m venv venvNameHM4
 
