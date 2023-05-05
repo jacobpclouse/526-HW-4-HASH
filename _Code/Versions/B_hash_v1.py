@@ -21,26 +21,17 @@ def divide_into_blocks(m):
 
 # SOURCE REFERENCED: https://realpython.com/python-zip-function/
 def h2(blocks):
-    num_blocks = len(blocks)
-    blocksize = len(blocks[0])
-    # hash block with block
-    hash_result = ''
-    # XOR the first block with the second block, and so on
-    for i in range(1, num_blocks):
-        # print(blocks[i-1])
-        # print(blocks[i])
-        for j in range(blocksize):
-            output = blocks[i][j] ^ blocks[i-1][j]
-            hash_result += str(output)
-    
+    # Apply the h2 hash function to the blocks
+    hash_result = blocks[0]
+    for block in blocks[1:]:
+        hash_result = bytes(a ^ b for a, b in zip(hash_result, block))
     return hash_result
-
+    # return hashlib.sha256(hash_result).hexdigest()
 
 
 # Example usage:
-m = b'Ahe rain in spain falls neatly in the drain...The rain in spain falls neatly in the drain...The rain in spain falls neatly in the drain...The rain in spain fal1Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient.'
+m = b'The rain in spain falls neatly in the drain...'
 blocks = divide_into_blocks(m)
-print(blocks)
 hash_result = h2(blocks)
 print(hash_result)
 
