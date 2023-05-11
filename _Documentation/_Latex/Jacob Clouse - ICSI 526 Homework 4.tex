@@ -63,13 +63,13 @@
 \subsection{Hash function B (h2(m) = M1 $\oplus$ M2 … $\oplus$ Mn.)}
 \noindent Properties:
 \begin{itemize}
-	\item One Way Property: This does satisfy the One Way Property. We divide a message  
+	\item One Way Property: This does satisfy the One Way Property. The hash function h2(x) is one-way because given an input message m, it is computationally infeasible to determine the message m from the hash value h2(m). This is because the hash function uses the bitwise XOR operation to combine the blocks of the message, which is a one-way function.
 	
 	
-	\item Weak Collision Resistance: This is Weak Collision Resistant.
+	\item Weak Collision Resistance: This is Weak Collision Resistant.The hash function h2(x) is weak-collision resistant because it is computationally infeasible to find two messages m1 and m2 such that h2(m1) = h2(m2). This is because any change to the input message, no matter how small, will result in a completely different hash value due to the bitwise XOR operation.
 	
 	
-	\item Strong Collision Resistance: This is Strong Collision Resistant. 
+	\item Strong Collision Resistance: This is NOT Strong Collision Resistant. This is because it is possible to find two messages m1 and m2 that have the same hash value h2(m1) = h2(m2) with a brute-force attack. For example, if we take the message M1 = M2 = ... = Mn = 0, then h2(m) will always be 0. Which means it is not secure for applications where strong collision resistance is required, such as in digital signatures.
 \end{itemize}
 
 
