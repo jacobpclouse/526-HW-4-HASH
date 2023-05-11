@@ -43,12 +43,34 @@
 \vspace{0.2in}
 
 \section{Question 1}
-\subsection{Implement hash function A (n = p x q)}
-\noindent Implement A...
+\subsection{Hash function A (n = p x q)}
+\noindent Properties: 
+\begin{itemize}
+	\item One Way Property: This does satisfy the One Way Property even if we know n. We because of the Modulus, we don't know how many times the original function has 'wrapped around' so to speak. We can't predict the output.
+	
+	
+	\item Weak Collision Resistance: This is NOT Weak Collision Resistant, it is possible to generate the same hash value for two different inputs. We can use -2 and 2 as our input x values and p = 107 and q = 127 for our primes.
+	Because of the x**2, they will be the same value N = 13589 when being fed into the mod function and will output the same hash. 
+	Because for any two inputs x1 and x2, if x1 $\neq$ x2, then there exists a possibility that h1(x1) = h1(x2) which means that this is false.
+	
+	
+	\item Strong Collision Resistance: This is NOT Strong Collision Resistant. The reason is that for any two inputs x1 and x2, the hash function h1(x) produces the same output if x1 = -x2 (mod n). That is, h1(x1) = h1(x2) if x1 $\equiv$ -x2 (mod n). 
+	An attacker who knows the primes p and q can easily find two inputs x1 and x2 such that x1 $\equiv$ -x2 (mod n) and then generate a collision by computing h1(x1) and h1(x2). 
+	
+\end{itemize}
 
 \vspace{0.2in}
-\subsection{Implement hash function B (h2(m) = M1 $\oplus$ M2 … $\oplus$ Mn.)}
-\noindent Implement B...
+\subsection{Hash function B (h2(m) = M1 $\oplus$ M2 … $\oplus$ Mn.)}
+\noindent Properties:
+\begin{itemize}
+	\item One Way Property: This does satisfy the One Way Property. We divide a message  
+	
+	
+	\item Weak Collision Resistance: This is Weak Collision Resistant.
+	
+	
+	\item Strong Collision Resistance: This is Strong Collision Resistant. 
+\end{itemize}
 
 
 
