@@ -49,9 +49,7 @@
 	\item One Way Property: This does satisfy the One Way Property even if we know n. We because of the Modulus, we don't know how many times the original function has 'wrapped around' so to speak. We can't predict the output.
 	
 	
-	\item Weak Collision Resistance: This is NOT Weak Collision Resistant, it is possible to generate the same hash value for two different inputs. We can use -2 and 2 as our input x values and p = 107 and q = 127 for our primes.
-	Because of the x**2, they will be the same value N = 13589 when being fed into the mod function and will output the same hash. 
-	Because for any two inputs x1 and x2, if x1 $\neq$ x2, then there exists a possibility that h1(x1) = h1(x2) which means that this is false.
+	\item Weak Collision Resistance: This is Weak Collision Resistant. This is because it is computationally difficult to find two distinct inputs x and y such that h1(x) = h1(y). Suppose an attacker has a message x and wants to find another message y such that h1(y) = h1(x). The attacker can try to compute y by solving the equation $y^2$ $\equiv$ $x^2$ (mod n). Since n = p * q is the product of two large primes, it is computationally infeasible to directly compute the square roots of $x^2$ (mod n) without knowing the factorization of n.
 	
 	
 	\item Strong Collision Resistance: This is NOT Strong Collision Resistant. The reason is that for any two inputs x1 and x2, the hash function h1(x) produces the same output if x1 = -x2 (mod n). That is, h1(x1) = h1(x2) if x1 $\equiv$ -x2 (mod n). 

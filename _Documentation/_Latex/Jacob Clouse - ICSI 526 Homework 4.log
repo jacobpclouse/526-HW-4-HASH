@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2023.2.17)  11 MAY 2023 12:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2023.2.17)  11 MAY 2023 12:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -223,24 +223,26 @@ ouse - ICSI 526 Homework 4.aux) )
 Here is how much of TeX's memory you used:
  2400 strings out of 475385
  39214 string characters out of 2777379
- 382209 words of memory out of 3000000
+ 383209 words of memory out of 3000000
  23763 multiletter control sequences out of 15000+600000
  478704 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,62p,487b,272s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 55i,7n,62p,604b,272s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\Jake\AppData\Local\MiKTeX\fonts/pk/
 ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Jake/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Jake/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Jake/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Jake/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/J
-ake/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/
-Users/Jake/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb>
-Output written on "Jacob Clouse - ICSI 526 Homework 4.pdf" (2 pages, 89586 byte
-s).
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Jake/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/
+Jake/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
+/Users/Jake/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.
+pfb><C:/Users/Jake/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmr7.pfb><C:/Users/Jake/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb>
+Output written on "Jacob Clouse - ICSI 526 Homework 4.pdf" (2 pages, 105820 byt
+es).
 PDF statistics:
- 44 PDF objects out of 1000 (max. 8388607)
+ 54 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
