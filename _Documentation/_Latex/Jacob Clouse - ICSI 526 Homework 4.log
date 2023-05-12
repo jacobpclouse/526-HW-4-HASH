@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2023.2.17)  11 MAY 2023 12:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2023.2.17)  11 MAY 2023 20:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -221,10 +221,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {C:/Users/Jake/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] (Jacob Cl
 ouse - ICSI 526 Homework 4.aux) ) 
 Here is how much of TeX's memory you used:
- 2400 strings out of 475385
- 39214 string characters out of 2777379
+ 2401 strings out of 475385
+ 39232 string characters out of 2777379
  383209 words of memory out of 3000000
- 23763 multiletter control sequences out of 15000+600000
+ 23764 multiletter control sequences out of 15000+600000
  478704 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,7n,62p,604b,272s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -239,7 +239,7 @@ Jake/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
 pfb><C:/Users/Jake/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmr7.pfb><C:/Users/Jake/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmsy10.pfb>
-Output written on "Jacob Clouse - ICSI 526 Homework 4.pdf" (2 pages, 105820 byt
+Output written on "Jacob Clouse - ICSI 526 Homework 4.pdf" (2 pages, 113031 byt
 es).
 PDF statistics:
  54 PDF objects out of 1000 (max. 8388607)

@@ -68,10 +68,17 @@
 	
 	
 	\item Strong Collision Resistance: This is NOT Strong Collision Resistant. This is because it is possible to find two messages m1 and m2 that have the same hash value h2(m1) = h2(m2) with a brute-force attack. For example, if we take the message M1 = M2 = ... = Mn = 0, then h2(m) will always be 0. Which means it is not secure for applications where strong collision resistance is required, such as in digital signatures.
+	
 \end{itemize}
 
 
-
+\subsection{How to run each Hash Algorithm}
+\noindent Running both hashing programs is very similar, so here is a step by step guide:
+\begin{itemize}
+	\item Make sure you have installed python 3 and pip installed the imports listed at the top of each function. 
+	\item For Hash A, you will just need to type \textbf{python A\_strong\_col.py} in the terminal and hit run. It may take a while to find any collisions, but this should find them.
+	\item For Hash B, you will just need to type \textbf{python B\_strong\_col.py} in the terminal and hit run. Again, it may take a while to find any collisions, but this should find them.
+\end{itemize}
 
 
 
@@ -79,17 +86,18 @@
 \vspace{0.2in}
 \section{Question 2}
 \subsection{Design and implement a PRNG using AES (OFB mode)}
-\noindent Design Algo...
-
-
-\subsection{Calculate the Fraction of One Bits} 
-\noindent Calculate FOOB...
+\noindent To run the algorithm, follow these steps:
+\begin{itemize}
+	\item Make sure you have python 3 installed and pip install the imports designated inside your virtual environment.
+	\item Run the program by using: \textbf{python prng.py}
+	\item It should output the random numbers, Fraction of One Bits, and the Fraction of Bits that Match. You are all set!
+\end{itemize}
 
 \vspace{0.2in}
 
 
-
-
+\section{Youtube Link}
+\noindent Here is the Youtube link to my video presentation: \textbf{https://youtu.be/QxpQORY8pbg}
 
 
 
